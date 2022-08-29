@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Prova | Ianes Tech</title>
+
+    <script src="./js/eventos.js">
+
+    </script>
+    <link rel="stylesheet" href="./css/aulas_javascript.css">
+
+</head>
+
+<body>
+
+
+    <!-- <div style="padding: 30px; background-color: red; width: 10vw; height: 10vw; margin-left: 100px"></div> -->
+
+    <header>
+        <img class='logo-h' src="./images/logo-icon.png" alt="">
+
+        <nav class='catalog-h'>
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li class="catalog-active"><a href="./cursos.html">Cursos</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-h">Entrar</button>
+    </header>
+
+
+    <section id="pos-header">
+        <figure>
+            <img id='curso-icon' src="./images/transp.png" alt="">
+            <br>
+            <h1 id='curso-name'></h1>
+        </figure>
+    </section>
+
+    <main>
+
+
+        <div class="curso-back">
+            <h1 class="title-curos">O que é JavaScript?</h1>
+
+            <p>
+                JavaScript é uma linguagem de programação interpretada estruturada, de script em alto nível com tipagem
+                dinâmica fraca e multiparadigma. Juntamente com HTML e CSS, o JavaScript é uma das três principais
+                tecnologias da World Wide Web.
+
+                <br><br>
+
+                <label>Exemplo</label>
+
+                <img src="./images/aulas/JavaScript/aulas/exemplojs2.png" alt="">
+            </p>
+
+            <h1 class="title-curos">Introdução</h1>
+
+            <p>
+
+                JavaScript pode alterar o conteúdo HTML
+                Um dos muitos métodos HTML JavaScript é o "getElementById()".
+
+                <br><br>
+
+                O exemplo abaixo "encontra" um elemento HTML (com id="demo") e altera o conteúdo do elemento (innerHTML)
+                para "Hello JavaScript":
+
+            </p>
+
+
+            <h1 class="title-curos">Palavras chaves JavaScript</h1>
+
+            <p>
+                As instruções JavaScript geralmente começam com uma palavra- chave para identificar a ação JavaScript a
+                ser executada. Nossa referência de palavras reservadas lista todas as palavras-chave JavaScript. <br>
+                <br>
+
+                Aqui está uma lista de algumas das palavras-chave que você aprenderá neste tutorial: <br>
+                <img src="./images/aulas/JavaScript/aulas/exemplojs1.png" alt="">
+            </p>
+
+            <h1 class="title-curos">Variáveis JavaScript</h1>
+
+            <p>
+                <label>4 maneiras de declarar uma variável JavaScript:</label> <br><br>
+                - Usando: var A = 0; <br>
+                - Usando: let A = 0; <br>
+                - Usando: const A = 0; <br>
+                - Usando: nada, apenas 'A = 0;' <br>
+            </p>
+
+            <h1 class="title-curos">Operadores JavaScript</h1>
+
+            <p>
+                As variáveis ​​JavaScript podem conter diferentes tipos de dados: números, strings, objetos e mais: <br><br>
+
+                <img src="./images/aulas/JavaScript/aulas/exemplojs4.png" alt="">
+            </p>
+
+            <h1 class="title-curos">JavaScript na tag Head</h1>
+
+            <p>
+
+                Neste exemplo, um JavaScript functioné colocado na 'head' seção de uma página HTML. <br>
+                A função é invocada (chamada) quando um botão é clicado: <br>
+
+                <br>
+
+                <label>Exemplo</label>
+                <br>
+                <img src="./images/aulas/JavaScript/aulas/exemplojs5.png" alt="">
+
+            </p>
+
+            <p>
+                <button class="button-prova" onclick="startProva()">Fazer Prova</button>
+            </p>
+        </div>
+
+
+
+    </main>
+
+
+    <footer>
+        <section class="section-f">
+            <img src="./images/logo-icon.png" alt="">
+
+            <p>
+                Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+                consultoria para empresas
+            </p>
+        </section>
+
+        <section class="section-f">
+            <h1>Meios de contatos</h1>
+
+            <p>Telefone: (31) 3554-3434</p>
+            <p> Email: ianestechoficial@gmail.com</p>
+            <p>Whatsapp: (31) 9 99435-5341</p>
+
+        </section>
+
+        <section class="section-f">
+            <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+        </section>
+    </footer>
+
+
+</body>
+
+<script type="text/javascript">
+
+    var UserLogin = getUserLogin('index.html');
+
+    var LoginHea = document.querySelector('.login-h');
+    LoginHea.innerHTML = `Olá, ${UserLogin.info.nome}`;
+   
+    var _cursoName = window.location.href.substring(7,window.location.href.length).split('/')[1];
+    _cursoName = _cursoName.substring(5,_cursoName.length - 5);
+
+    var dir = `images/aulas/${_cursoName}`
+
+    var body = document.querySelector('body');
+    body.style.backgroundImage = `url('${dir}/bg.png')`
+
+
+    var cursoName = document.getElementById('curso-name');
+    var cursoIcon = document.getElementById('curso-icon');
+
+    cursoName.innerHTML = _cursoName;
+    cursoIcon.src = `${dir}/icon.png`;
+
+    function startProva() {
+        localStorage.setItem('prova_materia', _cursoName);
+        goPage('./prova.html');
+
+
+    }
+
+</script>
+
+</html>

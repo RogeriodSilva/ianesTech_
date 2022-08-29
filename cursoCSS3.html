@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Prova | Ianes Tech</title>
+
+    <script src="./js/eventos.js">
+
+    </script>
+    <link rel="stylesheet" href="./css/aulas_css3.css">
+
+</head>
+
+<body>
+
+
+    <!-- <div style="padding: 30px; background-color: red; width: 10vw; height: 10vw; margin-left: 100px"></div> -->
+
+    <header>
+        <img class='logo-h' src="./images/logo-icon.png" alt="">
+
+        <nav class='catalog-h'>
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li class="catalog-active"><a href="./cursos.html">Cursos</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-h">Entrar</button>
+    </header>
+
+
+    <section id="pos-header">
+        <figure>
+            <img id='curso-icon' src="./images/transp.png" alt="">
+            <br>
+            <h1 id='curso-name'></h1>
+        </figure>
+    </section>
+
+    <main>
+
+
+        <div class="curso-back">
+            <h1 class="title-curos">O que é CSS?</h1>
+
+            <p>
+                CSS é a linguagem que usamos para estilizar um documento HTML. CSS descreve como os elementos HTML devem
+                ser exibidos. Este tutorial ensinará CSS do básico ao avançado
+            </p>
+
+            <h1 class="title-curos">Exemplos em cada capítulo</h1>
+
+            <p>
+                Este tutorial de CSS contém centenas de exemplos de CSS.
+                Com nosso editor online, você pode editar o CSS e clicar em um botão para visualizar o resultado.
+
+                <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss1.PNG" alt="">
+
+            </p>
+
+            <h1 class="title-curos">Exercícios de CSS</h1>
+
+            <p>
+
+                <label>Teste você mesmo</label>
+                <br>
+                <img src="./images/aulas/CSS3/aulas/exemplocss2.PNG" alt="">
+
+            </p>
+
+            <h1 class="title-curos">CSS Syntax</h1>
+
+            <p>
+                Uma regra CSS consiste em um seletor e um bloco de declaração.
+
+                <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss3.PNG" alt="">
+
+
+                <br><br>
+
+                - O seletor aponta para o elemento HTML que você deseja estilizar. <br>
+                - O bloco de declaração contém uma ou mais declarações separadas por ponto e vírgula. <br>
+                - Cada declaração inclui um nome de propriedade CSS e um valor, separados por dois pontos. <br>
+                - Várias declarações CSS são separadas por ponto e vírgula e os blocos de declaração são cercados por
+                chaves. <br>
+
+                <br>
+
+                <label>Exemplos:</label>
+
+                <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss4.PNG" alt="">
+
+
+                <br><br>
+
+                <label>Exemplo explicado</label>
+
+                <br><br>
+
+                - Exemplo explicado p é um seletor em CSS (ele aponta para o elemento HTML que você deseja estilizar:
+                "p"). <br>
+                - color é uma propriedade e vermelho é o valor da propriedade <br>
+                - text-align é uma propriedade e center é o valor da propriedade <br>
+
+            </p>
+
+            <h1 class="title-curos">Texto CSS</h1>
+
+            <p>
+                <img src="./images/aulas/CSS3/aulas/exemplocss5.PNG" alt="">
+
+                <br><br>
+
+                <label>Cor do Texto</label>
+
+                <br><br>
+
+                A propriedade color é usada para definir a cor do texto. A cor é especificada por:
+
+                <br>
+
+                - um nome de cor - como "vermelho" <br>
+                - um valor HEX - como "#ff0000" <br>
+                - um valor RGB - como "rgb(255,0,0)" <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss6.PNG" alt="">
+
+                <br><br>
+
+                <label>Cor do texto e cor de fundo</label><br><br>
+
+                Neste exemplo, definimos a propriedade background-color e a propriedade color: <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss8.PNG" alt="">
+
+                <br><br>
+
+                <label>A propriedade de cor de texto CSS</label>
+
+                <br>
+
+                <img src="./images/aulas/CSS3/aulas/exemplocss9.PNG" alt="">
+            </p>
+
+            <p>
+                <button class="button-prova" onclick="startProva()">Fazer Prova</button>
+            </p>
+        </div>
+
+
+
+    </main>
+
+
+    <footer>
+        <section class="section-f">
+            <img src="./images/logo-icon.png" alt="">
+
+            <p>
+                Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+                consultoria para empresas
+            </p>
+        </section>
+
+        <section class="section-f">
+            <h1>Meios de contatos</h1>
+
+            <p>Telefone: (31) 3554-3434</p>
+            <p> Email: ianestechoficial@gmail.com</p>
+            <p>Whatsapp: (31) 9 99435-5341</p>
+
+        </section>
+
+        <section class="section-f">
+            <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+        </section>
+    </footer>
+
+
+</body>
+
+<script type="text/javascript">
+
+    var UserLogin = getUserLogin('index.html');
+
+    var LoginHea = document.querySelector('.login-h');
+    LoginHea.innerHTML = `Olá, ${UserLogin.info.nome}`;
+
+    var _cursoName = window.location.href.substring(7, window.location.href.length).split('/')[1];
+    _cursoName = _cursoName.substring(5, _cursoName.length - 5);
+
+    var dir = `images/aulas/${_cursoName}`
+
+    var body = document.querySelector('body');
+    body.style.backgroundImage = `url('${dir}/bg.png')`
+
+
+    var cursoName = document.getElementById('curso-name');
+    var cursoIcon = document.getElementById('curso-icon');
+
+    cursoName.innerHTML = _cursoName;
+    cursoIcon.src = `${dir}/icon.png`;
+
+    function startProva() {
+        localStorage.setItem('prova_materia', _cursoName);
+        goPage('./prova.html');
+
+
+    }
+
+</script>
+
+</html>

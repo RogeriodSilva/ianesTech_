@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login | Ianes Tech</title>
+
+  <script src="js/eventos.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/login.css" />
+
+
+</head>
+
+<body>
+  <div class="container">
+    <a class="links" id="paralogin" target="_blank"></a>
+    <a class="links" id="paracadastro"></a>
+
+
+    <div class="content">
+      <!--FORMULÁRIO DE LOGIN-->
+      <div id="login">
+        <form method="post" action="#" name="login">
+          <h1>Login</h1>
+
+          <p>
+            <label>E-mail</label>
+            <input id="email_login" name="email" type="email" />
+          </p>
+
+
+          <p>
+            <label>Senha</label>
+            <input id="senha_log" name="senha" type="password" />
+          </p>
+
+          <!-- <p> 
+            <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
+            <label for="manterlogado">Manter-me logado</label>
+          </p> -->
+
+          <p>
+            <input type="submit" value="Logar" onclick="return CheckLogin()" />
+          </p>
+
+          <p class="link">
+            Ainda não tem conta?
+            <a href="#paracadastro">Cadastre-se</a>
+          </p>
+        </form>
+      </div>
+
+      <!--FORMULÁRIO DE CADASTRO-->
+      <div id="cadastro">
+        <form method="post" action="#" name="cadastro">
+          <h1>Cadastro</h1>
+
+          <p>
+            <label for="nome_cad">Nome</label>
+            <input id="nome" name="nome"  type="text" />
+          </p>
+
+          <p>
+            <label for="sobrenome_cad">Sobrenome</label>
+            <input id="sobrenome" name="sobrenome"  type="text" />
+          </p>
+
+          <p>
+            <label for="email_cad">E-mail</label>
+            <input id="email_cad" name="email"  type="email" placeholder="Ex.: contato@.com" />
+          </p>
+
+          <p>
+            <label for="cpf_cad">CPF</label>
+            <input id="cpf_cad" name="cpf"  type="cpf" placeholder="Digite seu CPF" />
+          </p>
+
+          <p>
+            <label for="data_cad"> Data de nascimento </label>
+            <input type="date" id="data_nasc" name="data_nasc" min="1900-01-01" />
+          </p>
+
+          <p>
+            <label>Sexo:</label> <br />
+            <input type="radio" name="sexo" value="M" />
+            <label>Masculino</label>
+            <input type="radio" name="sexo" value="F" />
+            <label>Feminino</label>
+          </p>
+
+          <!-- <p>
+          <label for="inputAddress">Endereço</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Ex.: Rua dos Bobos, nº 0">
+         </p>
+      -->
+
+          <p>
+            <label for="senha_cad">Senha</label>
+            <input id="senha" name="senha"  type="password" placeholder="Ex.: 1234" />
+          </p>
+
+          <p>
+            <label for="senha_cad">Confirmação de senha</label>
+            <input id="senhanov" name="senhanov"  type="password" placeholder="Ex.: 1234" />
+          </p>
+
+          <p>
+            <input type="submit" value="Cadastrar" onclick="return AddCadastro()" />
+          </p>
+
+          <p class="link">
+            Já tem conta?
+            <a href="#paralogin"> Ir para Login </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <section class="f-section-f">
+      <img src="./images/logo-icon.png" alt="">
+
+      <p>
+        Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+        consultoria para empresas
+      </p>
+
+      <p>
+        <a href="index.html">Inicio</a>
+      </p>
+
+    </section>
+
+    <section class="f-section-f">
+      <h1>Meios de contatos</h1>
+
+      <p>Telefone: (31) 3554-3434</p>
+      <p> Email: ianestechoficial@gmail.com</p>
+      <p>Whatsapp: (31) 9 99435-5341</p>
+
+    </section>
+
+    <section class="f-section-f">
+      <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+    </section>
+  </footer>
+</body>
+
+<script type="text/javascript">
+
+  document.querySelectorAll('input').forEach((input)=>{
+    if(input.type != 'submit'){
+      input.addEventListener('focus',()=>{
+        input.style.border = '';
+      })
+    }
+  })
+
+</script>
+
+</html>

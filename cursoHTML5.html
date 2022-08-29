@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Prova | Ianes Tech</title>
+
+    <script src="../js/eventos.js">
+
+    </script>
+    <link rel="stylesheet" href="../css/aulas_html5.css">
+
+</head>
+
+<body>
+
+
+    <!-- <div style="padding: 30px; background-color: red; width: 10vw; height: 10vw; margin-left: 100px"></div> -->
+
+    <header>
+        <img class='logo-h' src="../images/logo-icon.png" alt="">
+
+        <nav class='catalog-h'>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li class="catalog-active"><a href="../cursos.html">Cursos</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-h">Entrar</button>
+    </header>
+
+
+    <section id="pos-header">
+        <figure>
+            <img id='curso-icon' src="../images/transp.png" alt="">
+            <br>
+            <h1 id='curso-name'></h1>
+        </figure>
+    </section>
+
+    <main>
+
+
+        <div class="curso-back">
+            <h1 class="title-curos">O que é HTML?</h1>
+
+            <p>
+                - HTML significa Hyper Text Markup Language <br>
+                - HTML é a linguagem de marcação padrão para criar páginas da Web <br>
+                - HTML descreve a estrutura de uma página da Web <br>
+                - HTML consiste em uma série de elementos <br>
+                - Elementos HTML informam ao navegador como exibir o conteúdo <br>
+                - Elementos HTML rotulam partes do conteúdo como "este é um título", "este é um parágrafo", "este é um
+                link", etc. <br>
+
+                <img src="" alt="">
+            </p>
+
+            <h1 class="title-curos">Exemplo explicado</h1>
+
+            <p>
+                - A "DOCTYPE html"declaração define que este documento é um documento HTML5 <br>
+                - O <"html"> elemento é o elemento raiz de uma página HTML <br>
+                    - O <"heade"> elemento contém informações meta sobre a página HTML <br>
+                        - O <"title"> elemento especifica um título para a página HTML (que é mostrado na barra de
+                            título do navegador ou na guia da página) <br>
+                            - O <"body"> elemento define o corpo do documento e é um recipiente para todos os conteúdos
+                                visíveis, como títulos, parágrafos, imagens, hiperlinks, tabelas, listas, etc. <br>
+                                - O <"h1"> elemento define um título grande <br>
+                                    - O <"p"> elemento define um parágraf <br>
+            </p>
+
+            <h1 class="title-curos">HTML Tabelas</h1>
+
+            <p>
+
+                <label>Teste você mesmo</label>
+                <br>
+                <img src="../images/aulas/HTML5/aulas/exemplohtml2.png" alt="">
+                <img src="../images/aulas/HTML5/aulas/exemplohtml3.png" alt="">
+
+                <br><br>
+
+                <label>Células da Tabela</label><br><br>
+
+                Cada célula da tabela é definida por uma tag "td" e "td". O "td" significa dados de tabela
+                Tudo entre "td" e "td" é o conteúdo da célula da tabela.
+
+            </p>
+
+            <h1 class="title-curos">HTML Listas</h1>
+
+            <p>
+                As listas HTML permitem que os desenvolvedores da Web agrupem um conjunto de itens relacionados em
+                listas.
+
+                <br>
+
+                <img src="../images/aulas/HTML5/aulas/exemplohtml4.png" alt="">
+
+
+            </p>
+
+            <h1 class="title-curos">Lista HTML não ordenada</h1>
+
+            <p>
+
+                Uma lista não ordenada começa com a tag "ul". Cada item da lista começa com a tag "li"
+                Os itens da lista serão marcados com marcadores (pequenos círculos pretos) por padrão:
+
+                <br>
+                <img src="../images/aulas/HTML5/aulas/exemplohtml5.PNG" alt="">
+            </p>
+
+            <p>
+                <button class="button-prova" onclick="startProva()">Fazer Prova</button>
+            </p>
+        </div>
+
+
+
+    </main>
+
+
+    <footer>
+        <section class="section-f">
+            <img src="../images/logo-icon.png" alt="">
+
+            <p>
+                Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+                consultoria para empresas
+            </p>
+        </section>
+
+        <section class="section-f">
+            <h1>Meios de contatos</h1>
+
+            <p>Telefone: (31) 3554-3434</p>
+            <p> Email: ianestechoficial@gmail.com</p>
+            <p>Whatsapp: (31) 9 99435-5341</p>
+
+        </section>
+
+        <section class="section-f">
+            <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+        </section>
+    </footer>
+
+
+</body>
+
+<script type="text/javascript">
+
+    var UserLogin = getUserLogin('index.html');
+
+    var LoginHea = document.querySelector('.login-h');
+    LoginHea.innerHTML = `Olá, ${UserLogin.info.nome}`;
+
+    var _cursoName = window.location.href.substring(7, window.location.href.length).split('/')[1];
+    _cursoName = _cursoName.substring(5, _cursoName.length - 5);
+
+    var dir = `images/aulas/${_cursoName}`
+
+    var body = document.querySelector('body');
+    body.style.backgroundImage = `url('${dir}/bg.png')`
+
+
+    var cursoName = document.getElementById('curso-name');
+    var cursoIcon = document.getElementById('curso-icon');
+
+    cursoName.innerHTML = _cursoName;
+    cursoIcon.src = `${dir}/icon.png`;
+
+    function startProva() {
+        localStorage.setItem('prova_materia', _cursoName);
+        goPage('./prova.html');
+
+
+    }
+
+</script>
+
+</html>

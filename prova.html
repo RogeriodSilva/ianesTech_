@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Prova | Ianes Tech</title>
+
+    <script src="./js/eventos.js"></script>
+    <link rel="stylesheet" href="css/prova.css">
+
+</head>
+
+<body>
+
+    <header>
+        <img class='logo-h' src="./images/logo-icon.png" alt="">
+
+        <nav class='catalog-h'>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li class="catalog-active"><a href="cursos.html">Cursos</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-h">Entrar</button>
+    </header>
+
+
+    <section id="pos-header">
+        <figure>
+            <img id='prova-icon' src="./images/transp.png" alt="">
+            <br>
+            <h1 id='prova-name'></h1>
+            <label id='prova-tenta'></label>
+        </figure>
+    </section>
+
+    <main>
+        <article id="back-prova"></article>
+    </main>
+
+
+    <footer>
+        <section class="section-f">
+            <img src="./images/logo-icon.png" alt="">
+
+            <p>
+                Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+                consultoria para empresas
+            </p>
+        </section>
+
+        <section class="section-f">
+            <h1>Meios de contatos</h1>
+
+            <p>Telefone: (31) 3554-3434</p>
+            <p> Email: ianestechoficial@gmail.com</p>
+            <p>Whatsapp: (31) 9 99435-5341</p>
+
+        </section>
+
+        <section class="section-f">
+            <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+        </section>
+    </footer>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+    var MaxTenta = 3;
+
+    var UserLogin = getUserLogin('index.html');
+    var MateriaName = localStorage.getItem('prova_materia');
+    var UserProva = UserLogin.info.provas[MateriaName];
+
+    var LoginHea = document.querySelector('.login-h');
+    LoginHea.innerHTML = `Olá, ${UserLogin.info.nome}`
+
+    if (UserProva.acabou) {
+
+        createElements(document.querySelector('#pos-header'),false,
+                {
+                    div: {
+                        Attribute: {
+                            style: {
+                                'display': 'flex',
+                                'justify-content': 'space-around',
+                                'align-items': 'center',
+
+                                'width': '100vw',
+                            }
+                        }
+                    },
+                    h1: {
+                        Close: true,
+                        Content: `Você já finalizou essa prova! <br/>  Nota ${UserProva.nota}/${getTotal(MateriaName)} - ${100 * UserProva.nota/getTotal(MateriaName)}%`,
+                        Attribute: {
+                            style: {
+                                'float': 'left',
+
+                                'min-width': '900px',
+                                'max-width': '900px',
+
+                                'font-size': '40px',
+                                'align-text': 'justify',
+                            }
+                        }
+                    },
+                    button: {
+                        Content: 'Voltar aos cursos',
+                        Attribute: {
+                            id: 'recom-modul',
+                            onclick: `goPage('cursos.html')`,
+                            style: {
+                                'float': 'left',
+                                'font-weight': '600',
+
+                                'min-width': '450px',
+                                'max-width': '450px',
+                                'min-height': '70px',
+                                'max-height': '70px',
+
+                                'border-radius': '30px',
+                                'background-color': '#000',
+
+                                'font-size': '25px'
+                            }
+                        }
+                    }
+                })
+
+    } else {
+        if (UserProva.tentativas <= MaxTenta) {
+            GerarProva();
+
+            var elemtTent = document.querySelector('#prova-tenta');
+            elemtTent.innerHTML = `Tentativas ${UserProva.tentativas}/${MaxTenta}`
+
+        } else {
+
+            var posHeaderFigure = document.querySelector('#pos-header figure');
+            posHeaderFigure.style.display = 'none'
+
+            createElements(document.querySelector('#pos-header'),false,
+                {
+                    div: {
+                        Attribute: {
+                            style: {
+                                'display': 'flex',
+                                'justify-content': 'space-around',
+                                'align-items': 'center',
+
+                                'width': '100vw',
+                            }
+                        }
+                    },
+                    h1: {
+                        Close: true,
+                        Content: `Desculpe! você excedeu o limite de tentativas desta prova. <br/>  Nota ${UserProva.nota}/${getTotal(MateriaName)} - ${100 * UserProva.nota/getTotal(MateriaName)}%`,
+                        Attribute: {
+                            style: {
+                                'float': 'left',
+
+                                'min-width': '800px',
+                                'max-width': '800px',
+
+                                'font-size': '40px',
+                                'align-text': 'justify',
+                            }
+                        }
+                    },
+                    button: {
+                        Content: 'Recomeçar o modulo',
+                        Attribute: {
+                            id: 'recom-modul',
+                            onclick: 'RecomModule()',
+                            style: {
+                                'float': 'left',
+                                'font-weight': '600',
+
+                                'min-width': '450px',
+                                'max-width': '450px',
+                                'min-height': '70px',
+                                'max-height': '70px',
+
+                                'border-radius': '30px',
+                                'background-color': '#000',
+
+                                'font-size': '25px'
+                            }
+                        }
+                    }
+                })
+
+        }
+
+    }
+
+</script>
+
+</html>

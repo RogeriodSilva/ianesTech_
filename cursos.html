@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/cursos.css">
+    <script src="./js/eventos.js"></script>
+
+    <title>Cursos | IANES TECH</title>
+</head>
+
+
+<body>
+
+    <header class="no-print">
+        <img class='logo-h' src="./images/logo-icon.png" alt="">
+
+        <nav class='catalog-h'>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a class="catalog-active" href="">Cursos</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-h" onclick="">Entrar</button>
+    </header>
+
+
+    <div class="pos-h no-print">
+        <div class="pos-h-text">
+            <h1>Cursos</h1>
+        </div>
+    </div>
+
+
+    <div class="content no-print">
+        <div class="materia-back">
+
+        </div>
+
+        <div class="cursos-back">
+            <section class="cb-curso" id="cb-HTML5">
+                <img src="./images/aulas/HTML5/icon.png" alt="">
+
+                <h2>HTML5</h2>
+
+                <p>
+                    Carga Horário: 47 horas
+                </p>
+
+                <p class="curso-status">
+                    Não Concluido
+                </p>
+
+
+                <button id="HTML5" class="cb-button" onclick="irCurso(this.id)">Começar</button>
+            </section>
+            <section class="cb-curso" id="cb-JavaScript">
+                <img src="./images/aulas/JavaScript/icon.png" alt="">
+
+                <h2>JavaScript</h2>
+
+                <p>
+                    Carga Horário: 23 horas
+                </p>
+
+                <p class="curso-status">
+                    Não Concluido
+                </p>
+
+
+
+                <button id="JavaScript" class="cb-button" onclick="irCurso(this.id)">Começar</button>
+            </section>
+            <section class="cb-curso" id="cb-CSS3">
+                <img src="./images/aulas/CSS3/icon.png" alt="">
+
+                <h2>CSS3</h2>
+
+                <p>
+                    Carga Horário: 35 horas
+                </p>
+
+                <p class="curso-status">
+                    Não Concluido
+                </p>
+
+                <button id="CSS3" class="cb-button" onclick="irCurso(this.id)">Começar</button>
+            </section>
+        </div>
+
+    </div>
+
+    <footer class="no-print">
+        <section class="section-f">
+            <img src="./images/logo-icon.png" alt="">
+
+            <p>
+                Ianes Tech é uma empresa brasileira legalmente estabelecida e presta serviços educacionais a distância e
+                consultoria para empresas
+            </p>
+
+        </section>
+
+        <section class="section-f">
+            <h1>Meios de contatos</h1>
+
+            <p>Telefone: (31) 3554-3434</p>
+            <p> Email: ianestechoficial@gmail.com</p>
+            <p>Whatsapp: (31) 9 99435-5341</p>
+
+        </section>
+
+        <section class="section-f">
+            <p>Copyright © 2022 - Ianes Tech, Inc. - Todos os Direitos Reservados.</p>
+        </section>
+    </footer>
+
+
+    <div class="cert-back">
+        <div id="certificado">
+
+            <div class="">
+                <h1>CERTIFICADO DE CONCLUSÃO</h1>
+            </div>
+    
+            <div>
+                <p>Certificamos que</p>
+                <h1 id="userNome">ROGÉRIO DA SILVA JÚNIOR</h1>
+            </div>
+    
+            <div>
+                <p>Concoluiu com sucesso o módulo</p>
+                <h1 id="materiaName"></h1>
+                <p></p>
+                <p>do curso online Ianes Tech ministrado por WELLINGTON PEREIRA SANTOS</p>
+            </div>
+    
+            <div>
+                <table cellpadding="30px">
+                    <tr>
+                        <td>
+                            Carga horaria do módulo: <label>42 horas</label>
+                        </td>
+                        <td id="datanow">
+                            Data de conclusão: <label>08-03-2003</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div id="assinatura">
+                <img src="./images/assinatura.png" alt="">
+                <hr width="20%" size="1" color="black" style="margin-top: 0;">
+    
+                <p>WELLINGTON PEREIRA SANTOS</p>
+                <p>Instrutor da Ianes Tech</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    var UserLogin = getUserLogin('login.html#paralogin');
+    var UserProva = UserLogin.info.provas;
+
+    var LoginHea = document.querySelector('.login-h');
+    LoginHea.innerHTML = `Olá, ${UserLogin.info.nome}`
+
+
+    document.querySelectorAll('.cb-curso').forEach((cursoBack) => {
+        var cursoName = cursoBack.id.substring(3, cursoBack.id.length);
+
+        var cursoStatus = cursoBack.querySelector('.curso-status');
+        cursoStatus.innerHTML = `Finalizado: ${(UserProva[cursoName].acabou === true ? 'Sim' : 'Não')}`
+
+        if (UserProva[cursoName].acabou) {
+
+            createElements(cursoBack, true, {
+                button: {
+                    Close: false,
+                    Content: 'Certificado',
+                    Attribute: {
+                        id: `${cursoName}`,
+                        onclick: 'certificado(this.id)',
+                        class: ['cb-button']
+                    }
+                }
+            })
+        }
+
+    })
+
+
+    function irCurso(materia_name) {
+        goPage(`../curso${materia_name}.html`)
+    }
+
+    function certificado(materia_name) {
+        var UserLogin = getUserLogin();
+
+        var userNome = document.querySelector('#userNome');
+        var materiaName = document.querySelector('#materiaName');
+        var datanow = document.querySelector('#datanow');
+
+        userNome.innerHTML = `${UserLogin.info.nome} ${UserLogin.info.sobrenome}`;
+        materiaName.innerHTML = materia_name;
+        datanow.innerHTML = `Data de Conclusão <label>${dataNow()}</label>`
+
+        window.print();
+    }
+
+</script>
+
+
+
+</html>
